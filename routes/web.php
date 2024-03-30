@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+/* ROTTA HOMEPAGE */
+Route::get('/', HomeController::class )->name('home');
 
-Route::get('/projects', function () {
-    return view('project_list.projects');
-})->middleware(['auth', 'verified'])->name('project_list.projects');
+/* ROTTA INDEX */
+Route::get('/projects', [PortfolioController::class, 'index'])->middleware('auth')->name('project_list.index');
 
+/* ROTTE PROFILO */
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
