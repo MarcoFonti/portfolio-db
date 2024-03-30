@@ -12,7 +12,7 @@
     <link rel="icon" href="{{ Vite::asset('resources/img/logo.png') }}">
 
     {{-- TITOLO --}}
-    <title>{{ config('app.name', 'portfolio_db') }}</title>
+    <title>{{ config('app.name', 'portfolio_db') }} | @yield('title')</title>
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
